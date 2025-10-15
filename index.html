@@ -9,16 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Noterro Brand Indigo & Slate -->
-    <!-- Application Structure Plan: The SPA is structured as an interactive dashboard with a fixed left-hand navigation menu. The core sections are designed to follow the logic of the strategic document: 1. Strategic Framework (The 'Why'), 2. 90-Day Roadmap (The 'When'), 3. Testing Blueprints (The 'How'), and 4. Hypothesis Hub (The 'What'). This information architecture was chosen to guide the user (our team or FPG) through the strategy from high-level concept to granular implementation. It's more usable than a linear document because it allows users to jump directly to the section relevant to their immediate task, whether that's reviewing a funnel, checking this week's roadmap priority, or building a new ad using a template. Key interactions include tabbed navigation, interactive funnel diagrams with hover effects, and a dynamic I.C.E. score calculator in the Hypothesis Hub. -->
-    <!-- Visualization & Content Choices: 
-        - Competitive Positioning: Goal: Compare brand stances. Viz: HTML Table. Interaction: None. Justification: Clear, scannable text comparison.
-        - Funnel Strategy: Goal: Explain resource allocation. Viz: Donut Chart (Chart.js) for the 80/20 split and HTML/CSS flow diagrams for the funnels. Interaction: Hover to highlight funnel stages. Justification: Visualizes the strategic priority and clarifies the steps in each funnel.
-        - 90-Day Roadmap: Goal: Track weekly tasks. Viz: Structured HTML timeline. Interaction: None. Justification: Easy-to-read, chronological plan.
-        - Testing Blueprints: Goal: Provide actionable templates. Viz: HTML tables and tabbed content for SOPs. Interaction: Tab switching for detailed SOPs. Justification: Organizes detailed implementation rules (Meta SOP) alongside core checklists.
-        - Hypothesis Hub: Goal: Enable new test creation. Viz: HTML form with JS sliders. Interaction: Sliders update I.C.E. score in real-time. Justification: Interactive tool to engage the team in strategic planning.
-        - All choices confirm to NO SVG/Mermaid. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -113,6 +103,10 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
                     Strategic Framework
                 </a>
+                <a href="#branding" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                    Brand-Led Growth
+                </a>
                 <a href="#roadmap" class="nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>
                     90-Day Roadmap
@@ -129,7 +123,6 @@
         </aside>
 
         <main class="flex-1 p-6 md:p-8 lg:p-10">
-            <!-- Strategic Framework Section -->
             <div id="framework" class="content-section active">
                 <header class="mb-8">
                     <h2 class="text-3xl font-bold text-slate-900">Strategic Framework</h2>
@@ -200,7 +193,7 @@
                             </div>
                         </div>
                         <div class="bg-white rounded-lg shadow-lg p-6">
-                            <h4 class="font-bold text-lg">Lead Capture Funnel (Secondary Focus)</h4>
+                            <h4 class="font-bold text-lg">Lead Capture Funnel (20% Focus)</h4>
                             <p class="text-sm text-slate-500">**Secondary Focus:** Low-pressure, value-add path for users in the research phase using the Clinic Survival Guide (TOFU).</p>
                             <div class="mt-4 space-y-2">
                                 <div class="funnel-stage p-3 border rounded-lg flex items-center">
@@ -219,47 +212,105 @@
                     </div>
                 </div>
 
-                <!-- New Lead Capture Rationale Card -->
-                <div class="bg-white rounded-lg shadow-lg p-6 mt-8">
-                    <h3 class="text-xl font-semibold mb-4 text-indigo-700">Strategic Lead Capture Rationale: The Clinic Survival Guide</h3>
-                    <p class="text-slate-600 mb-4">Our secondary, high-quality lead capture campaign is designed to bring high-value prospects into our funnel before they are ready to try the software. This strategy leverages the **Clinic Survival Guide** as the ultimate **value-add incentive** to lower friction and increase lead volume.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-t pt-4">
-                        <div class="space-y-2">
-                            <h4 class="font-semibold text-slate-800">Why Use Lead Capture (The Why)</h4>
-                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4">
-                                <li>**Lower Barrier:** Asking for an email for a free guide is easier than asking for a 14-day commitment. This captures users in the early **research/pain recognition** stage.</li>
-                                <li>**Audience Expansion:** Allows us to target broader audiences on Meta and Google (e.g., "Clinic Owner Problems") who aren't yet searching for "SOAP Notes software."</li>
-                                <li>**Quality Signal:** The content (Survival, Growth, Scale) naturally self-selects high-value clinic owners struggling with **Technician Trap** issues.</li>
+                <div class="bg-white rounded-lg shadow-lg p-8 mt-8">
+                    <h3 class="text-2xl font-bold mb-2 text-indigo-700">Top-of-Funnel Strategy: The "Clinic Survival Guide" Flywheel</h3>
+                    <p class="text-slate-600 mb-6 max-w-3xl">Our lead capture campaign isn't just about getting emails. It's about building a long-term growth engine. We will intercept practitioners when they are **problem-aware**, not just **solution-aware**. By offering immense value upfront with the "Clinic Survival Guide," we establish Noterro as a trusted, empathetic partner [cite: 51, 53] long before they're ready to compare software features. This builds our audience, lowers future acquisition costs, and seeds brand loyalty from the first interaction.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 border-t pt-6">
+                        <div class="space-y-2 p-4 bg-slate-50 rounded-lg">
+                            <div class="flex items-center"><div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold mr-3">1</div><h4 class="font-semibold text-slate-800">Attract (The Why)</h4></div>
+                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4 space-y-1 pt-2">
+                                <li>**Lower Barrier:** Asking for an email for a guide is easier than asking for a 14-day trial. This captures users in the early **research/pain recognition** stage.</li>
+                                <li>**Audience Expansion:** Target broad "practitioner burnout" or "clinic admin" topics, reaching people who aren't yet searching for software.</li>
+                                <li>**Quality Signal:** The content naturally self-selects for our Ideal Customer Profile: practitioners who are focused on treatment over business and need help with operations[cite: 123, 124].</li>
                             </ul>
                         </div>
-                        <div class="space-y-2">
-                            <h4 class="font-semibold text-slate-800">Value-Add Impact (The What)</h4>
-                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4">
-                                <li>**Increases Trust:** We solve their problem (admin chaos) *before* asking for a sale, establishing Noterro as an **expert and partner** (Trustworthy & Helpful tone).</li>
-                                <li>**Boosts Lead Volume:** Value-add incentives typically yield **higher CTR and lower CPL** than direct trial offers.</li>
-                                <li>**Informs Nurture:** The download tells us their primary pain point (Part 1: Survival, Part 2: Growth), allowing us to send hyper-personalized content linking the solution back to Noterro's core features.</li>
+                        <div class="space-y-2 p-4 bg-slate-50 rounded-lg">
+                             <div class="flex items-center"><div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold mr-3">2</div><h4 class="font-semibold text-slate-800">Convert (The How)</h4></div>
+                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4 space-y-1 pt-2">
+                                <li>**Ad Focus:** Ad copy **must** lead with the pain point (e.g., "Stop Charting at 9 PM") and offer the **FREE GUIDE** as the immediate solution.</li>
+                                <li>**Landing Page:** Dedicated, distraction-free page with high-quality guide visuals and a minimal form (**3 fields max**) to reduce friction.</li>
+                                 <li>**Value Proposition:** The guide is positioned as the first step to "reclaim your time" [cite: 111] and "focus on what matters"[cite: 92].</li>
                             </ul>
                         </div>
-                        <div class="space-y-2">
-                            <h4 class="font-semibold text-slate-800">Campaign Execution (The How)</h4>
-                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4">
-                                <li>**Ad Focus:** Ad copy **MUST** point to the pain point (e.g., "Stop Charting at 9 PM") and offer the **FREE GUIDE DOWNLOAD** as the immediate solution.</li>
-                                <li>**Landing Page:** Dedicated Lead Capture LP with minimal distraction, high-quality guide imagery, and **MVP form fields (3 max)**.</li>
-                                <li>**Nurture:** Immediate email delivery of the Guide, followed by a sequence (over 7-14 days) that converts the *reader* into a *trial user* by referencing content from the Guide.</li>
+                        <div class="space-y-2 p-4 bg-slate-50 rounded-lg">
+                            <div class="flex items-center"><div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold mr-3">3</div><h4 class="font-semibold text-slate-800">Nurture (The What)</h4></div>
+                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4 space-y-1 pt-2">
+                                <li>**Build Trust:** An automated email sequence delivers value by referencing guide content before ever pushing for a trial. We prove we're helpful first.</li>
+                                <li>**Bridge to Product:** Each email connects a problem from the guide to a specific Noterro feature that solves it (e.g., "Guide tip on reminders" -> "Noterro's automated reminders").</li>
+                                <li>**Goal:** The aim is to convert the *reader* into a *trial user* by making Noterro the obvious, logical next step.</li>
+                            </ul>
+                        </div>
+                         <div class="space-y-2 p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                           <div class="flex items-center"><div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold mr-3">4</div><h4 class="font-semibold text-indigo-800">Amplify (The Future)</h4></div>
+                            <p class="text-sm font-medium text-indigo-700 pt-2">Phase 2: SEO & AI Authority Engine</p>
+                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4 space-y-1">
+                                <li>**Repurpose Content:** Break down the guide into dozens of high-value, answer-formatted blog posts ("How to reduce no-shows," "Best way to write SOAP notes faster").</li>
+                                <li>**Win AI Citations:** Structure this content with clear summaries, bullet points, and schema markup. The goal is to be the **cited source** in AI answers [cite: 385, 466] when practitioners ask platforms like ChatGPT or Gemini for help, positioning us as the definitive expert.</li>
+                                <li>**Build Moat:** This creates an organic traffic moat that is less dependent on paid ads, driving highly-qualified, high-intent traffic for years to come.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 90-Day Roadmap Section -->
+            <div id="branding" class="content-section">
+                <header class="mb-8">
+                    <h2 class="text-3xl font-bold text-slate-900">Brand-Led Growth & Conversion</h2>
+                    <p class="text-slate-600 mt-1">Our approach to testing feature and landing pages. The goal is to move beyond tactical CRO to build a brand that resonates, builds trust, and converts for the long term.</p>
+                </header>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-xl font-semibold mb-2 text-indigo-700">The Philosophy: From Clicks to Connection</h3>
+                    <p class="text-slate-600 mb-6 max-w-3xl">Standard CRO optimizes for a single action. **Brand-Led CRO** optimizes for a long-term relationship. Our audience isn't just looking for features; they're looking for a partner they can trust to simplify their life[cite: 125, 320]. Therefore, our landing pages must not only be clear and convincing, but also empathetic and reassuring[cite: 45]. This approach is how we build our "Branding and Reputation Moat" —by proving we understand their world before asking for their business.</p>
+
+                    <div class="overflow-x-auto border-t pt-6">
+                        <table class="w-full text-left">
+                            <thead class="table-header">
+                                <tr>
+                                    <th class="p-4 font-semibold text-lg">Component</th>
+                                    <th class="p-4 font-semibold text-lg text-red-600">"Old Way" (Purely Tactical CRO)</th>
+                                    <th class="p-4 font-semibold text-lg text-green-700">"Noterro Way" (Brand-Led CRO)</th>
+                                    <th class="p-4 font-semibold text-lg text-indigo-800">The Strategic "Why"</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="p-4 font-medium align-top">Hero Headline</td>
+                                    <td class="p-4 align-top text-slate-600">"Best Software for SOAP Notes"</td>
+                                    <td class="p-4 align-top text-slate-800 font-medium">"Finish Your SOAP Notes in Minutes, Not Hours"</td>
+                                    <td class="p-4 align-top text-indigo-700">Focuses on the **outcome** and **pain relief** (saving time), not just the feature. Speaks to the busy practitioner[cite: 13].</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-4 font-medium align-top">Hero Image</td>
+                                    <td class="p-4 align-top text-slate-600">Screenshot of the software interface.</td>
+                                    <td class="p-4 align-top text-slate-800 font-medium">A relaxed practitioner enjoying a coffee, knowing their admin work is done.</td>
+                                    <td class="p-4 align-top text-indigo-700">Sells the **destination**, not the airplane. Connects with their desire for a better work-life balance and reinforces our promise to simplify their life[cite: 320].</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-4 font-medium align-top">Social Proof</td>
+                                    <td class="p-4 align-top text-slate-600">"Join 5,000+ users."</td>
+                                    <td class="p-4 align-top text-slate-800 font-medium">A direct quote: "Noterro gave me my evenings back. I'm no longer charting late at night." - Dr. Emily, RMT</td>
+                                    <td class="p-4 align-top text-indigo-700">Specific, relatable stories are more powerful than generic numbers. It provides **empathetic proof** that we solve the exact problems they face[cite: 45].</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium align-top">Feature Callouts</td>
+                                    <td class="p-4 align-top text-slate-600">"We have automated invoicing, customizable forms, and secure data."</td>
+                                    <td class="p-4 align-top text-slate-800 font-medium">"**Get Paid Faster** with automated invoicing. **Chart Your Way** with customizable forms. **Practice with Confidence** with bank-level security."</td>
+                                    <td class="p-4 align-top text-indigo-700">Translates every feature into a direct **benefit**. This non-technical, approachable language is crucial for our audience[cite: 15, 54].</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <div id="roadmap" class="content-section">
                 <header class="mb-8">
                     <h2 class="text-3xl font-bold text-slate-900">The 90-Day Implementation Plan (Q4)</h2>
                     <p class="text-slate-600 mt-1">Our week-by-week roadmap for establishing baselines, testing, learning, and scaling.</p>
                 </header>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Month 1 -->
                     <div class="bg-white rounded-lg shadow-lg p-6">
                         <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 1: Foundation & Quick Wins</h3>
                         <div class="timeline-item">
@@ -283,47 +334,45 @@
                             <p class="text-sm text-slate-500">Revise trial welcome sequence with outcome-driven messaging.</p>
                         </div>
                     </div>
-                     <!-- Month 2 -->
-                    <div class="bg-white rounded-lg shadow-lg p-6">
+                     <div class="bg-white rounded-lg shadow-lg p-6">
                         <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 2: Testing & Learning</h3>
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 5: Feature Landing Pages</h4>
-                            <p class="text-sm text-slate-500">Build and launch paid campaigns for 3 feature-specific LPs (e.g., Booking, Invoicing).</p>
+                            <h4 class="font-semibold">Week 5-6: Feature Page Sprints</h4>
+                            <p class="text-sm text-slate-500">Launch Brand-Led CRO tests on 2 core feature pages (e.g., Booking, Charting).</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 6: Demo Funnel Optimization</h4>
-                            <p class="text-sm text-slate-500">Revise and A/B test the demo booking page (copy + CTA).</p>
+                            <h4 class="font-semibold">Week 7: Lead Magnet Launch</h4>
+                            <p class="text-sm text-slate-500">Launch "Clinic Survival Guide" TOFU campaign on Meta to build audience list.</p>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 7: Testimonial Collection</h4>
-                            <p class="text-sm text-slate-500">Collect video/written testimonials from top customers to use as social proof.</p>
-                        </div>
-                         <div class="timeline-item" style="border-left: 2px solid transparent;">
                             <div class="timeline-marker"></div>
                             <h4 class="font-semibold">Week 8: Data Review & Iteration</h4>
-                            <p class="text-sm text-slate-500">Analyze all test results and plan Month 3 scaling strategy.</p>
+                            <p class="text-sm text-slate-500">Analyze all test results, document learnings, and plan Month 3 scaling.</p>
                         </div>
+                         <div class="timeline-item" style="border-left: 2px solid transparent;">
+                             <div class="timeline-marker"></div>
+                             <h4 class="font-semibold">Week 8.5: Testimonial Collection</h4>
+                             <p class="text-sm text-slate-500">Collect new outcome-focused video/written testimonials for social proof.</p>
+                         </div>
                     </div>
-                     <!-- Month 3 -->
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 3: Scaling & Consolidation</h3>
+                     <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 3: Scaling & Amplifying</h3>
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 9: Scaling Action</h4>
-                            <p class="text-sm text-slate-500">Apply all winning messaging from M1/M2 tests to 100% of top-tier campaigns.</p>
+                            <h4 class="font-semibold">Week 9: Scale Winners</h4>
+                            <p class="text-sm text-slate-500">Apply winning messages from M1/M2 tests to 100% of top-tier campaigns.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 10: Landing Page Redesign</h4>
-                            <p class="text-sm text-slate-500">Launch updated SOAP Notes page informed by winning test messages.</p>
+                            <h4 class="font-semibold">Week 10: AI Content Rollout</h4>
+                            <p class="text-sm text-slate-500">Publish first 5 "answer-formatted" blog posts repurposed from the Survival Guide.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 11: LLM/AI Integration</h4>
-                            <p class="text-sm text-slate-500">Inject top-performing messages into FAQ schema and blog content.</p>
+                            <h4 class="font-semibold">Week 11: Nurture Sequence Optimization</h4>
+                            <p class="text-sm text-slate-500">Analyze lead magnet nurture sequence data and optimize for trial conversion.</p>
                         </div>
                          <div class="timeline-item" style="border-left: 2px solid transparent;">
                             <div class="timeline-marker"></div>
@@ -334,7 +383,6 @@
                 </div>
             </div>
 
-            <!-- Testing Blueprints Section (TABBED INTERFACE) -->
             <div id="blueprints" class="content-section">
                 <header class="mb-8">
                     <h2 class="text-3xl font-bold text-slate-900">Testing Blueprints & Templates</h2>
@@ -342,14 +390,12 @@
                 </header>
 
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <!-- Tab Navigation -->
                     <div id="blueprintTabs" class="flex border-b border-slate-200 mb-6 -mt-1">
                         <button class="tab-button active" data-tab="landing">Appendix A: Landing Page CRO</button>
                         <button class="tab-button" data-tab="creative">Appendix B: Ad Creative Template</button>
                         <button class="tab-button" data-tab="meta-sop">Appendix C: Meta Ads Sprint SOP</button>
                     </div>
 
-                    <!-- Tab Content - Landing Page -->
                     <div id="landingContent" class="tab-content active">
                         <h3 class="text-xl font-semibold mb-4 text-indigo-700">Appendix A: Landing Page Development & CRO Checklist</h3>
                         <p class="text-sm text-slate-600 mb-4">Focus on isolating a single variable (H1, CTA, or Form Fields) per test to ensure reliable results. Prioritize simplicity and empathy over complexity. **Primary Goal: Optimize Feature Pages for Trial Signup (80% Focus).**</p>
@@ -375,7 +421,6 @@
                         </div>
                     </div>
 
-                    <!-- Tab Content - Ad Creative -->
                     <div id="creativeContent" class="tab-content">
                         <h3 class="text-xl font-semibold mb-4 text-indigo-700">Appendix B: Paid Ad Creative & Messaging Template</h3>
                         <p class="text-sm text-slate-600 mb-4">All ad creative must be designed to validate a specific P.A.I.N. hypothesis. Creative A (Control) must be your best-performing ad.</p>
@@ -399,7 +444,6 @@
                         </div>
                     </div>
 
-                    <!-- Tab Content - Meta Ads SOP -->
                     <div id="meta-sopContent" class="tab-content">
                         <h3 class="text-xl font-semibold mb-4 text-indigo-700">Appendix C: Meta Ads Sprint SOP (The Why & How)</h3>
                         <div class="space-y-6 text-slate-600">
@@ -409,8 +453,8 @@
                             <h4 class="font-bold text-lg text-slate-800">2. Mandatory Campaign Architecture</h4>
                             <p>FPG must strictly adhere to the two-tier structure to isolate learning from performance budget:</p>
                              <ul class="list-disc list-inside ml-4 space-y-2">
-                                <li>**Tier 1: Always-On Campaigns (80-85% Budget):** Used *only* for scaling **proven winning creative/audience combinations**. Campaign Budget Optimization (CBO) is suitable here.</li>
-                                <li>**Tier 2: Testing Sprints (15-20% Budget):** Where all P.A.I.N. testing occurs. **Crucially, Ad Set Budget Optimization (ABO) is mandatory here.** This forces an **equal budget split** (50/50) between the Control (A) and Variant (B), preventing Meta's algorithm from prematurely favoring a variant before we reach the statistical sample size required for learning.</li>
+                                 <li>**Tier 1: Always-On Campaigns (80-85% Budget):** Used *only* for scaling **proven winning creative/audience combinations**. Campaign Budget Optimization (CBO) is suitable here.</li>
+                                 <li>**Tier 2: Testing Sprints (15-20% Budget):** Where all P.A.I.N. testing occurs. **Crucially, Ad Set Budget Optimization (ABO) is mandatory here.** This forces an **equal budget split** (50/50) between the Control (A) and Variant (B), preventing Meta's algorithm from prematurely favoring a variant before we reach the statistical sample size required for learning.</li>
                              </ul>
 
                             <h4 class="font-bold text-lg text-slate-800">3. Sprint Testing Mechanics (ABO 1:1 Rule)</h4>
@@ -429,16 +473,15 @@
 
                              <h4 class="font-bold text-lg text-slate-800">4. Kill & Scale Guardrails (Data-Driven Decisions)</h4>
                              <ul class="list-disc list-inside ml-4 space-y-2">
-                                <li>**Minimum Duration:** **7 Days** (to clear the learning phase).</li>
-                                <li>**Kill Switch:** Pause the variant and document learnings if CPL exceeds the Tier 1 historical CPL by **50%** after 5 days.</li>
-                                <li>**Scaling:** Only scale the winning variant (verified by statistical significance) to the Tier 1 budget. Apply budget increases incrementally (max **20% every 72 hours**) to maintain CVR stability.</li>
+                                 <li>**Minimum Duration:** **7 Days** (to clear the learning phase).</li>
+                                 <li>**Kill Switch:** Pause the variant and document learnings if CPL exceeds the Tier 1 historical CPL by **50%** after 5 days.</li>
+                                 <li>**Scaling:** Only scale the winning variant (verified by statistical significance) to the Tier 1 budget. Apply budget increases incrementally (max **20% every 72 hours**) to maintain CVR stability.</li>
                              </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Hypothesis Hub Section -->
             <div id="hypothesis" class="content-section">
                 <header class="mb-8">
                     <h2 class="text-3xl font-bold text-slate-900">Hypothesis Hub & Prioritization</h2>
@@ -499,29 +542,58 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-link');
     const contentSections = document.querySelectorAll('.content-section');
 
+    // Function to handle navigation
+    function navigateToSection(hash) {
+        const targetId = hash.substring(1);
+        let sectionFound = false;
+
+        navLinks.forEach(l => l.classList.remove('active'));
+        contentSections.forEach(section => section.classList.remove('active'));
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === hash) {
+                link.classList.add('active');
+            }
+        });
+        
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+            sectionFound = true;
+        }
+
+        // Default to framework if hash is invalid or not present
+        if (!sectionFound) {
+            document.querySelector('.nav-link[href="#framework"]').classList.add('active');
+            document.getElementById('framework').classList.add('active');
+        }
+    }
+    
+    // Handle clicks on nav links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-
-            contentSections.forEach(section => {
-                section.classList.remove('active');
-                if (section.id === targetId) {
-                    section.classList.add('active');
-                }
-            });
+            const targetHash = link.getAttribute('href');
+            window.location.hash = targetHash;
+            navigateToSection(targetHash);
         });
     });
+    
+    // Handle hash changes (e.g., back/forward buttons)
+    window.addEventListener('hashchange', () => {
+        navigateToSection(window.location.hash);
+    });
+
+    // Initial load
+    navigateToSection(window.location.hash || '#framework');
+
 
     // Funnel Split Chart
     const funnelCtx = document.getElementById('funnelSplitChart').getContext('2d');
     new Chart(funnelCtx, {
         type: 'doughnut',
         data: {
-            labels: ['Trial Signup Funnel (Self-Service)', 'Demo Booking Funnel (High-Touch)'],
+            labels: ['Trial Signup Funnel (80%)', 'Lead Capture Funnel (20%)'],
             datasets: [{
                 data: [80, 20],
                 backgroundColor: ['#4f46e5', '#a5b4fc'],
@@ -543,7 +615,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            return `${context.label}: ${context.raw}%`;
+                            return `${context.label}: ${context.raw}% Focus`;
                         }
                     }
                 }
