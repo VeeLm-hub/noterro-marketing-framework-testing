@@ -3,91 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noterro Interactive Strategy & Testing Dashboard</title>
+    <title>Noterro Growth Operating System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9; /* slate-100 */
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-        }
-        .nav-link {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            color: #475569; /* slate-600 */
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .nav-link:hover, .nav-link.active {
-            background-color: #eef2ff; /* indigo-50 */
-            color: #4338ca; /* indigo-700 */
-        }
-        .nav-link svg {
-            margin-right: 0.75rem;
-        }
-        .content-section {
-            display: none;
-        }
-        .content-section.active {
-            display: block;
-        }
-        .table-header {
-            background-color: #f8fafc; /* slate-50 */
-        }
-        .timeline-item {
-            position: relative;
-            padding-left: 2.5rem;
-            padding-bottom: 2rem;
-            border-left: 2px solid #e2e8f0; /* slate-200 */
-        }
-        .timeline-marker {
-            position: absolute;
-            left: -0.5rem;
-            top: 0;
-            width: 1rem;
-            height: 1rem;
-            border-radius: 9999px;
-            background-color: #fff;
-            border: 2px solid #6366f1; /* indigo-500 */
-        }
-        .funnel-stage {
-            transition: background-color 0.2s, transform 0.2s;
-        }
-        .funnel-stage:hover {
-            background-color: #f0f9ff; /* sky-50 */
-            transform: scale(1.02);
-        }
-        .tab-button {
-            padding: 0.75rem 1.5rem;
-            border-bottom: 3px solid transparent;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: #64748b;
-        }
-        .tab-button.active {
-            border-color: #4f46e5;
-            color: #4f46e5;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .chart-container { position: relative; width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; height: 300px; }
+        .nav-link { display: flex; align-items: center; padding: 0.75rem 1rem; border-radius: 0.5rem; color: #475569; font-weight: 500; transition: all 0.2s; }
+        .nav-link:hover, .nav-link.active { background-color: #eef2ff; color: #4338ca; }
+        .nav-link svg { margin-right: 0.75rem; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .table-header { background-color: #f8fafc; }
+        .timeline-item { position: relative; padding-left: 2.5rem; padding-bottom: 2rem; border-left: 2px solid #e2e8f0; }
+        .timeline-marker { position: absolute; left: -0.5rem; top: 0; width: 1rem; height: 1rem; border-radius: 9999px; background-color: #fff; border: 2px solid #6366f1; }
+        .funnel-stage { transition: background-color 0.2s, transform 0.2s; }
+        .funnel-stage:hover { background-color: #f0f9ff; transform: scale(1.02); }
+        .tab-button { padding: 0.75rem 1.5rem; border-bottom: 3px solid transparent; font-weight: 600; cursor: pointer; transition: all 0.2s; color: #64748b; }
+        .tab-button.active { border-color: #4f46e5; color: #4f46e5; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .status-badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        .status-backlog { background-color: #f1f5f9; color: #475569; }
+        .status-testing { background-color: #eff6ff; color: #2563eb; }
+        .status-complete { background-color: #f0fdf4; color: #16a34a; }
     </style>
 </head>
 <body class="text-slate-800">
@@ -96,30 +38,30 @@
         <aside class="w-64 bg-white shadow-lg p-4 sticky top-0 h-screen flex-shrink-0">
             <div class="flex items-center mb-8">
                 <div class="w-10 h-10 bg-indigo-600 text-white flex items-center justify-center rounded-lg font-bold text-xl mr-3 shadow-md">N</div>
-                <h1 class="text-xl font-bold text-slate-900">Strategy Hub</h1>
+                <h1 class="text-xl font-bold text-slate-900">Growth OS</h1>
             </div>
             <nav class="space-y-2">
                 <a href="#framework" class="nav-link active">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>
                     Strategic Framework
                 </a>
-                <a href="#branding" class="nav-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    Brand-Led Growth
+                <a href="#process" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" /></svg>
+                    Our Process & Cadence
                 </a>
-                <a href="#testing_framework" class="nav-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 2a.5.5 0 01.5.5V4a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5V2.5a.5.5 0 01.5-.5h1zM6 4.5a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V4a.5.5 0 00.5.5h1zM12 2a.5.5 0 01.5.5V4a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5V2.5a.5.5 0 01.5-.5h1zM11 4.5a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V4a.5.5 0 00.5.5h1z" /><path d="M3.707 6.293a1 1 0 00-1.414 1.414l1.586 1.586V12.5a.5.5 0 00.5.5h1.5a.5.5 0 00.5-.5V9.293l1.586-1.586a1 1 0 10-1.414-1.414L7.586 7.586 6.293 6.293z" /><path d="M12.5 12.5a.5.5 0 01-.5-.5V9.293l-1.586-1.586a1 1 0 10-1.414 1.414l1.586 1.586V12.5a.5.5 0 00.5.5h1.5a.5.5 0 00.5-.5z" /><path fill-rule="evenodd" d="M4 14a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>
-                    Testing Framework
+                <a href="#engine" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 3.5a1.5 1.5 0 013 0V4a1 1 0 001 1h3a1 1 0 011 1v2a1 1 0 01-1 1h-3a1 1 0 00-1 1v1.5a1.5 1.5 0 01-3 0V10a1 1 0 00-1-1H4a1 1 0 01-1-1V6a1 1 0 011-1h3a1 1 0 001-1V3.5zM3.5 10a1.5 1.5 0 010 3H4a1 1 0 001 1v3a1 1 0 01-1 1H3.5a1.5 1.5 0 010-3H3a1 1 0 00-1-1v-3a1 1 0 011-1h.5zM10 16.5a1.5 1.5 0 013 0V17a1 1 0 001 1h3a1 1 0 011 1v2a1 1 0 01-1 1h-3a1 1 0 00-1 1v1.5a1.5 1.5 0 01-3 0V21a1 1 0 00-1-1h-3a1 1 0 01-1-1v-2a1 1 0 011-1h3a1 1 0 001-1v-1.5z" /></svg>
+                    The Growth Engine
                 </a>
                 <a href="#roadmap" class="nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>
                     90-Day Roadmap
                 </a>
-                <a href="#blueprints" class="nav-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h2a2 2 0 002-2V4a2 2 0 00-2-2H9z" /><path d="M4 12a2 2 0 012-2h10a2 2 0 012 2v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5z" /></svg>
-                    Testing Blueprints
+                <a href="#testing_framework" class="nav-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 2a.5.5 0 01.5.5V4a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5V2.5a.5.5 0 01.5-.5h1zM6 4.5a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V4a.5.5 0 00.5.5h1zM12 2a.5.5 0 01.5.5V4a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5V2.5a.5.5 0 01.5-.5h1zM11 4.5a.5.5 0 00.5-.5V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V4a.5.5 0 00.5.5h1z" /><path d="M3.707 6.293a1 1 0 00-1.414 1.414l1.586 1.586V12.5a.5.5 0 00.5.5h1.5a.5.5 0 00.5-.5V9.293l1.586-1.586a1 1 0 10-1.414-1.414L7.586 7.586 6.293 6.293z" /><path d="M12.5 12.5a.5.5 0 01-.5-.5V9.293l-1.586-1.586a1 1 0 10-1.414 1.414l1.586 1.586V12.5a.5.5 0 00.5.5h1.5a.5.5 0 00.5-.5z" /><path fill-rule="evenodd" d="M4 14a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>
+                    Testing Framework
                 </a>
-                <a href="#hypothesis" class="nav-link">
+                 <a href="#hypothesis" class="nav-link">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586zM10 11a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /><path d="M10 4a1 1 0 100-2 1 1 0 000 2zM10 16a1 1 0 100-2 1 1 0 000 2z"/></svg>
                     Hypothesis Hub
                 </a>
@@ -130,12 +72,15 @@
             <div id="framework" class="content-section active">
                 <header class="mb-8">
                     <h2 class="text-3xl font-bold text-slate-900">Strategic Framework</h2>
-                    <p class="text-slate-600 mt-1">This section defines our core competitive positioning and funnel strategy, providing the "why" behind our testing efforts.</p>
+                    <p class="text-slate-600 mt-1">Our high-level strategy, competitive positioning, and resource allocation.</p>
                 </header>
+                <div class="bg-indigo-800 text-white rounded-lg shadow-lg p-6 mb-8">
+                    <h3 class="text-xl font-semibold mb-2">Our Mission for Q4 2025:</h3>
+                    <p class="opacity-90">To run a series of targeted messaging tests to definitively identify the core psychological motivators of our ideal customers, culminating in a data-driven **Rebrand Thesis** that will inform a full site redesign in Q1 2026.</p>
+                </div>
                 
                 <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
                     <h3 class="text-xl font-semibold mb-4 text-indigo-700">Core Competitive Positioning</h3>
-                    <p class="mb-4 text-slate-600">Our market differentiation is built on being the perfect balance of power and simplicity. Every ad and landing page must communicate this value. We are not the most complex, nor the most basic—we are the most efficient.</p>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left">
                             <thead class="table-header">
@@ -164,16 +109,12 @@
                             </tbody>
                         </table>
                     </div>
-                     <div class="mt-6 p-4 bg-indigo-50 rounded-lg border-l-4 border-indigo-500">
-                        <p class="font-semibold text-indigo-800">Our One-Liner:</p>
-                        <p class="text-indigo-700 italic">"Noterro is the only practice management software that balances power and simplicity, so you can spend less time on software and more time helping patients—We’re here to help improve your life, so you can focus on improving theirs."</p>
-                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <div class="lg:col-span-1 bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-xl font-semibold text-indigo-700 mb-4">The 80/20 Rule: Learning Phase Allocation</h3>
-                        <p class="text-slate-600 mb-4 font-medium">The 80% allocation is strictly dedicated to **rapid testing and validating high-quality hypotheses (the learning phase)**, not long-term volume scaling. This ensures we formulate a granular, quality approach before committing large budgets.</p>
+                        <h3 class="text-xl font-semibold text-indigo-700 mb-4">The 80/20 Rule: Resource Allocation</h3>
+                        <p class="text-slate-600 mb-4 font-medium">80% of our effort is dedicated to **rapid testing and learning** to validate hypotheses. Only 20% is allocated to scaling proven winners.</p>
                         <div class="chart-container">
                             <canvas id="funnelSplitChart"></canvas>
                         </div>
@@ -181,142 +122,146 @@
                     <div class="lg:col-span-2 space-y-6">
                         <div class="bg-white rounded-lg shadow-lg p-6">
                             <h4 class="font-bold text-lg">Trial Signup Funnel (80% Focus)</h4>
-                            <p class="text-sm text-slate-500">**Primary Focus:** High-intent direct conversion path targeting users ready to sign up for a trial immediately (BOFU).</p>
-                            <div class="mt-4 space-y-2">
-                                <div class="funnel-stage p-3 border rounded-lg flex items-center">
-                                    <span class="text-indigo-600 font-bold mr-3">1. Awareness:</span><span class="text-slate-700">Paid Ads (Feature/Discipline), SEO</span>
-                                </div>
-                                <div class="text-center text-slate-400">↓</div>
-                                <div class="funnel-stage p-3 border rounded-lg flex items-center">
-                                    <span class="text-indigo-600 font-bold mr-3">2. Conversion:</span><span class="text-slate-700">Feature Page → **Trial Signup (Direct)**</span>
-                                </div>
-                                 <div class="text-center text-slate-400">↓</div>
-                                <div class="funnel-stage p-3 border rounded-lg flex items-center">
-                                    <span class="text-indigo-600 font-bold mr-3">3. Activation:</span><span class="text-slate-700">Immediate Trial Engagement</span>
-                                </div>
-                            </div>
+                            <p class="text-sm text-slate-500">High-intent path targeting users ready for a trial (BOFU).</p>
                         </div>
                         <div class="bg-white rounded-lg shadow-lg p-6">
                             <h4 class="font-bold text-lg">Lead Capture Funnel (20% Focus)</h4>
-                            <p class="text-sm text-slate-500">**Secondary Focus:** Low-pressure, value-add path for users in the research phase using the Clinic Survival Guide (TOFU).</p>
-                            <div class="mt-4 space-y-2">
-                                <div class="funnel-stage p-3 border rounded-lg flex items-center">
-                                    <span class="text-indigo-600 font-bold mr-3">1. Awareness:</span><span class="text-slate-700">Paid Ads (Guide Promotion), Content Marketing</span>
-                                </div>
-                                <div class="text-center text-slate-400">↓</div>
-                                <div class="funnel-stage p-3 border rounded-lg flex items-center">
-                                    <span class="text-indigo-600 font-bold mr-3">2. Conversion:</span><span class="text-slate-700">Guide Landing Page → **Download (Lead Capture)**</span>
-                                </div>
-                                <div class="text-center text-slate-400">↓</div>
-                                <div class="funnel-stage p-3 border rounded-lg flex items-center">
-                                    <span class="text-indigo-600 font-bold mr-3">3. Nurture:</span><span class="text-slate-700">Content-to-Trial Sequence</span>
-                                </div>
-                            </div>
+                            <p class="text-sm text-slate-500">Value-add path for users in the research phase (TOFU).</p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="bg-white rounded-lg shadow-lg p-8 mt-8">
-                    <h3 class="text-2xl font-bold mb-2 text-indigo-700">Top-of-Funnel Strategy: The "Clinic Survival Guide" Flywheel</h3>
-                    <p class="text-slate-600 mb-6 max-w-3xl">Our lead capture campaign isn't just about getting emails. It's about building a long-term growth engine. We will intercept practitioners when they are **problem-aware**, not just **solution-aware**. By offering immense value upfront with the "Clinic Survival Guide," we establish Noterro as a trusted, empathetic partner long before they're ready to compare software features. This builds our audience, lowers future acquisition costs, and seeds brand loyalty from the first interaction.</p>
+            <div id="process" class="content-section">
+                <header class="mb-8">
+                    <h2 class="text-3xl font-bold text-slate-900">Our Process & Cadence</h2>
+                    <p class="text-slate-600 mt-1">How we operate. This is our commitment to turning isolated tests into compounding knowledge.</p>
+                </header>
+                <div class="bg-white rounded-lg shadow-lg p-8 space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-indigo-700">The Growth Rhythm</h3>
+                        <p class="text-slate-600 mt-1">We operate in a continuous loop of execution and synthesis. This ensures we are always learning and building upon previous successes.</p>
+                    </div>
+                    <div class="border-t pt-6">
+                        <ol class="list-decimal list-inside space-y-4 text-slate-700">
+                           <li><strong class="font-semibold text-slate-800">Two-Week Testing Sprints:</strong> We execute prioritized tests from our backlog in focused, two-week sprints. The goal of each sprint is to achieve statistical significance on a single, core hypothesis.</li>
+                           <li><strong class="font-semibold text-slate-800">The Bi-Weekly Synthesis Meeting (Non-Negotiable):</strong> Following each sprint, we hold a mandatory 30-minute meeting. We do not ask "Did it win?"; we ask, "**What did we learn, and how does it update our Rebrand Thesis?**"</li>
+                           <li><strong class="font-semibold text-slate-800">Update the Learning Repository:</strong> The output of the synthesis meeting is a clear, concise entry into our Learning Repository. This becomes a permanent asset for the entire company.</li>
+                           <li><strong class="font-semibold text-slate-800">Cross-Pollination of Learnings:</strong> Before designing any new test, we are required to review the Learning Repository. Winning patterns from one test (e.g., a headline formula) become the new control/baseline for subsequent tests on other pages.</li>
+                           <li><strong class="font-semibold text-slate-800">Define "Validated":** An insight is considered "validated" and added to the Rebrand Thesis only after it has proven successful across at least **three separate tests** on different pages or features.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div id="engine" class="content-section">
+                 <header class="mb-8">
+                    <h2 class="text-3xl font-bold text-slate-900">The Growth Engine</h2>
+                    <p class="text-slate-600 mt-1">Our single source of truth. This is the living system where we manage tests, document insights, and build our brand strategy.</p>
+                </header>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div id="engineTabs" class="flex border-b border-slate-200 mb-6 -mt-1">
+                        <button class="tab-button active" data-tab="backlog">Testing Backlog</button>
+                        <button class="tab-button" data-tab="repository">Learning Repository</button>
+                        <button class="tab-button" data-tab="thesis">The Rebrand Thesis</button>
+                    </div>
+
+                    <div id="backlogContent" class="tab-content active">
+                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Prioritized Testing Backlog</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="table-header">
+                                    <tr>
+                                        <th class="p-3 font-semibold">Test ID</th>
+                                        <th class="p-3 font-semibold">Hypothesis</th>
+                                        <th class="p-3 font-semibold">Page / Element</th>
+                                        <th class="p-3 font-semibold">I.C.E.</th>
+                                        <th class="p-3 font-semibold">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b"><td class="p-3 font-mono text-sm">CBA-H1-01</td><td class="p-3">Testing outcome-driven headlines based on the 4 core motivators will outperform the current feature-focused headline.</td><td class="p-3">Clinic Branded App / Hero Section</td><td class="p-3 font-bold">25</td><td class="p-3"><span class="status-badge status-testing">Testing</span></td></tr>
+                                    <tr class="border-b"><td class="p-3 font-mono text-sm">CBA-SP-01</td><td class="p-3">Replacing generic social proof with a specific, pain-focused testimonial will increase trust and conversion.</td><td class="p-3">Clinic Branded App / Social Proof</td><td class="p-3 font-bold">22</td><td class="p-3"><span class="status-badge status-backlog">Backlog</span></td></tr>
+                                    <tr class="border-b"><td class="p-3 font-mono text-sm">INV-H1-01</td><td class="p-3">A headline focused on "reducing no-shows by 40%" will outperform one focused on "easy payments."</td><td class="p-3">Invoicing Page / Hero Section</td><td class="p-3 font-bold">21</td><td class="p-3"><span class="status-badge status-backlog">Backlog</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="repositoryContent" class="tab-content">
+                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Validated Learning Repository</h3>
+                         <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="table-header">
+                                    <tr>
+                                        <th class="p-3 font-semibold">Test ID</th>
+                                        <th class="p-3 font-semibold">Date</th>
+                                        <th class="p-3 font-semibold">Key Insight / Learning</th>
+                                        <th class="p-3 font-semibold">Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b"><td class="p-3 font-mono text-sm">CBA-H1-01</td><td class="p-3">Oct 29, 2025</td><td class="p-3">The "Time & Efficiency" headline ("Fill Your Calendar, Not Your Voicemail") beat the control by 28%. The "Patient Care" lever underperformed.</td><td class="p-3 text-green-600 font-medium">+28% CVR</td></tr>
+                                    <tr class="border-b"><td colspan="4" class="p-4 bg-slate-50 text-slate-600 text-sm"><em>(This table will be populated with the results of every completed test from the backlog...)</em></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 border-t pt-6">
-                        <div class="space-y-2 p-4 bg-slate-50 rounded-lg">
-                            <div class="flex items-center"><div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold mr-3">1</div><h4 class="font-semibold text-slate-800">Attract (The Why)</h4></div>
-                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4 space-y-1 pt-2">
-                                <li>**Lower Barrier:** Asking for an email for a guide is easier than asking for a 14-day trial. This captures users in the early **research/pain recognition** stage.</li>
-                                <li>**Audience Expansion:** Target broad "practitioner burnout" or "clinic admin" topics, reaching people who aren't yet searching for software.</li>
-                                <li>**Quality Signal:** The content naturally self-selects for our Ideal Customer Profile: practitioners who are focused on treatment over business and need help with operations.</li>
+                    <div id="thesisContent" class="tab-content">
+                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">The Rebrand Thesis (v0.1 - In Progress)</h3>
+                        <div class="prose max-w-none text-slate-700 space-y-4">
+                            <h4>Mission Statement</h4>
+                            <p>To communicate that Noterro is the simplest way for healthcare professionals to reclaim their time and focus on patient care.</p>
+                            
+                            <h4>Core Customer Motivators (Validated)</h4>
+                            <ul class="list-disc list-inside">
+                                <li><strong>(Hypothesis) Primary: Time & Efficiency.</strong> Practitioners are burned out from administrative work. Our messaging must lead with the promise of giving them their time back. (Confidence: High - Pending Test CBA-H1-01)</li>
+                                <li><strong>(Hypothesis) Secondary: Simplicity & Peace of Mind.</strong> They fear complex software. Our messaging must always be reassuring, simple, and non-technical. (Confidence: High)</li>
                             </ul>
-                        </div>
-                        <div class="space-y-2 p-4 bg-slate-50 rounded-lg">
-                             <div class="flex items-center"><div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold mr-3">2</div><h4 class="font-semibold text-slate-800">Convert (The How)</h4></div>
-                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4 space-y-1 pt-2">
-                                <li>**Ad Focus:** Ad copy **must** lead with the pain point (e.g., "Stop Charting at 9 PM") and offer the **FREE GUIDE** as the immediate solution.</li>
-                                <li>**Landing Page:** Dedicated, distraction-free page with high-quality guide visuals and a minimal form (**3 fields max**) to reduce friction.</li>
-                                 <li>**Value Proposition:** The guide is positioned as the first step to "reclaim your time" and "focus on what matters".</li>
-                            </ul>
-                        </div>
-                         <div class="space-y-2 p-4 bg-slate-50 rounded-lg">
-                            <div class="flex items-center"><div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold mr-3">3</div><h4 class="font-semibold text-slate-800">Nurture (The What)</h4></div>
-                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4 space-y-1 pt-2">
-                                <li>**Build Trust:** An automated email sequence delivers value by referencing guide content before ever pushing for a trial. We prove we're helpful first.</li>
-                                <li>**Bridge to Product:** Each email connects a problem from the guide to a specific Noterro feature that solves it (e.g., "Guide tip on reminders" -> "Noterro's automated reminders").</li>
-                                <li>**Goal:** The aim is to convert the *reader* into a *trial user* by making Noterro the obvious, logical next step.</li>
-                            </ul>
-                        </div>
-                        <div class="space-y-2 p-4 bg-indigo-50 rounded-lg border border-indigo-200">
-                           <div class="flex items-center"><div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold mr-3">4</div><h4 class="font-semibold text-indigo-800">Amplify (The Future)</h4></div>
-                            <p class="text-sm font-medium text-indigo-700 pt-2">Phase 2: SEO & AI Authority Engine</p>
-                            <ul class="list-disc list-inside text-sm text-slate-600 ml-4 space-y-1">
-                                <li>**Repurpose Content:** Break down the guide into dozens of high-value, answer-formatted blog posts ("How to reduce no-shows," "Best way to write SOAP notes faster").</li>
-                                <li>**Win AI Citations:** Structure this content with clear summaries, bullet points, and schema markup. The goal is to be the **cited source** in AI answers when practitioners ask platforms like ChatGPT or Gemini for help, positioning us as the definitive expert.</li>
-                                <li>**Build Moat:** This creates an organic traffic moat that is less dependent on paid ads, driving highly-qualified, high-intent traffic for years to come.</li>
+
+                            <h4>Winning Language Patterns (To Be Validated)</h4>
+                            <ul class="list-disc list-inside">
+                                <li>Leading with pain removal (e.g., "No more...", "Stop chasing...").</li>
+                                <li>Using specific, quantifiable outcomes (e.g., "...reduce no-shows by up to 40%").</li>
+                                <li>Translating every feature into a direct, human-centric benefit.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="branding" class="content-section">
+            <div id="roadmap" class="content-section">
                 <header class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900">Brand-Led Growth & Conversion</h2>
-                    <p class="text-slate-600 mt-1">Our approach to testing feature and landing pages. The goal is to move beyond tactical CRO to build a brand that resonates, builds trust, and converts for the long term.</p>
+                    <h2 class="text-3xl font-bold text-slate-900">The 90-Day Implementation Plan (Q4)</h2>
+                    <p class="text-slate-600 mt-1">Our week-by-week roadmap for executing our mission.</p>
                 </header>
-                
-                <div class="bg-white rounded-lg shadow-lg p-8">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-700">The Philosophy: From Clicks to Connection</h3>
-                    <p class="text-slate-600 mb-6 max-w-3xl">Standard CRO optimizes for a single action. **Brand-Led CRO** optimizes for a long-term relationship. Our audience isn't just looking for features; they're looking for a partner they can trust to simplify their life. Therefore, our landing pages must not only be clear and convincing, but also empathetic and reassuring. This approach is how we build our "Branding and Reputation Moat"—by proving we understand their world before asking for their business.</p>
-
-                    <div class="overflow-x-auto border-t pt-6">
-                        <table class="w-full text-left">
-                            <thead class="table-header">
-                                <tr>
-                                    <th class="p-4 font-semibold text-lg">Component</th>
-                                    <th class="p-4 font-semibold text-lg text-red-600">"Old Way" (Purely Tactical CRO)</th>
-                                    <th class="p-4 font-semibold text-lg text-green-700">"Noterro Way" (Brand-Led CRO)</th>
-                                    <th class="p-4 font-semibold text-lg text-indigo-800">The Strategic "Why"</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b">
-                                    <td class="p-4 font-medium align-top">Hero Headline</td>
-                                    <td class="p-4 align-top text-slate-600">"Best Software for SOAP Notes"</td>
-                                    <td class="p-4 align-top text-slate-800 font-medium">"Finish Your SOAP Notes in Minutes, Not Hours"</td>
-                                    <td class="p-4 align-top text-indigo-700">Focuses on the **outcome** and **pain relief** (saving time), not just the feature. Speaks to the busy practitioner.</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="p-4 font-medium align-top">Hero Image</td>
-                                    <td class="p-4 align-top text-slate-600">Screenshot of the software interface.</td>
-                                    <td class="p-4 align-top text-slate-800 font-medium">A relaxed practitioner enjoying a coffee, knowing their admin work is done.</td>
-                                    <td class="p-4 align-top text-indigo-700">Sells the **destination**, not the airplane. Connects with their desire for a better work-life balance and reinforces our promise to simplify their life.</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="p-4 font-medium align-top">Social Proof</td>
-                                    <td class="p-4 align-top text-slate-600">"Join 5,000+ users."</td>
-                                    <td class="p-4 align-top text-slate-800 font-medium">A direct quote: "Noterro gave me my evenings back. I'm no longer charting late at night." - Dr. Emily, RMT</td>
-                                    <td class="p-4 align-top text-indigo-700">Specific, relatable stories are more powerful than generic numbers. It provides **empathetic proof** that we solve the exact problems they face.</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-4 font-medium align-top">Feature Callouts</td>
-                                    <td class="p-4 align-top text-slate-600">"We have automated invoicing, customizable forms, and secure data."</td>
-                                    <td class="p-4 align-top text-slate-800 font-medium">"**Get Paid Faster** with automated invoicing. **Chart Your Way** with customizable forms. **Practice with Confidence** with bank-level security."</td>
-                                    <td class="p-4 align-top text-indigo-700">Translates every feature into a direct **benefit**. This non-technical, approachable language is crucial for our audience.</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 1: Foundation & First Learnings</h3>
+                        <div class="timeline-item"><div class="timeline-marker"></div><h4 class="font-semibold">Week 1-2: Setup & Finalize</h4><p class="text-sm text-slate-500">Audit tracking, build test variants for CBA-H1-01, and launch Lead Magnet campaign.</p></div>
+                        <div class="timeline-item" style="border-left: 2px solid transparent;"><div class="timeline-marker"></div><h4 class="font-semibold">Week 3-4: Sprint #1 & Synthesis</h4><p class="text-sm text-slate-500">Run CBA-H1-01 test. Hold first Synthesis Meeting and populate Learning Repository & Rebrand Thesis v0.1.</p></div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 2: Compounding Knowledge</h3>
+                        <div class="timeline-item"><div class="timeline-marker"></div><h4 class="font-semibold">Week 5-6: Sprint #2</h4><p class="text-sm text-slate-500">Launch INV-H1-01 test, using learnings from Sprint #1 to inform the control variant.</p></div>
+                        <div class="timeline-item" style="border-left: 2px solid transparent;"><div class="timeline-marker"></div><h4 class="font-semibold">Week 7-8: Sprint #3 & Synthesis</h4><p class="text-sm text-slate-500">Run test on Forms page. Synthesize learnings from Sprints 1 & 2 to update Rebrand Thesis to v0.2.</p></div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 3: Final Validation & Planning</h3>
+                        <div class="timeline-item"><div class="timeline-marker"></div><h4 class="font-semibold">Week 9-10: Final Validation Sprint</h4><p class="text-sm text-slate-500">Apply the v0.2 Rebrand Thesis to the Homepage for a final, high-impact validation test.</p></div>
+                        <div class="timeline-item" style="border-left: 2px solid transparent;"><div class="timeline-marker"></div><h4 class="font-semibold">Week 11-12: Finalize Rebrand Plan</h4><p class="text-sm text-slate-500">Synthesize all learnings into the final Rebrand Thesis v1.0 and create the full execution plan for the Q1 site redesign.</p></div>
                     </div>
                 </div>
             </div>
 
             <div id="testing_framework" class="content-section">
-                <header class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900">Feature Page Testing Framework: Building Our Rebrand Levers</h2>
-                    <p class="text-slate-600 mt-1">This is our systematic approach to understanding the core motivators of practitioners. We will test different messaging "levers" to gather quantitative data on what truly resonates. These findings will become the foundation for a full, data-driven redesign of our website's messaging.</p>
+                 <header class="mb-8">
+                    <h2 class="text-3xl font-bold text-slate-900">Feature Page Testing Framework</h2>
+                    <p class="text-slate-600 mt-1">Our methodology for systematically testing messaging levers to gather quantitative data on what truly motivates practitioners.</p>
                 </header>
                 <div class="bg-white rounded-lg shadow-lg p-8">
                     <h3 class="text-xl font-semibold mb-4 text-indigo-700">The Four Messaging Levers</h3>
-                    <p class="text-slate-600 mb-6">Every test will be designed to isolate one of these core psychological drivers. We will primarily test these on page headlines (H1) and sub-headlines, as they have the highest impact on conversion.</p>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left">
                             <thead class="table-header">
@@ -324,218 +269,16 @@
                                     <th class="p-3 font-semibold">Lever</th>
                                     <th class="p-3 font-semibold">Core Motivator</th>
                                     <th class="p-3 font-semibold">Hypothesis</th>
-                                    <th class="p-3 font-semibold">Example Test Headline (for Online Booking Page)</th>
+                                    <th class="p-3 font-semibold">Example Test Headline (Online Booking)</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border-b">
-                                    <td class="p-3 font-medium text-blue-600">1. Time & Efficiency</td>
-                                    <td class="p-3">Desire to reclaim personal time and reduce administrative burden.</td>
-                                    <td class="p-3">Practitioners are most motivated by the promise of getting time back in their day.</td>
-                                    <td class="p-3 font-mono text-sm">"Fill Your Calendar, Not Your Voicemail. Effortless Online Booking is Here."</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="p-3 font-medium text-green-600">2. Simplicity & Ease</td>
-                                    <td class="p-3">Desire to avoid complexity and technology-related stress.</td>
-                                    <td class="p-3">Our less tech-savvy audience will respond best to messages of simplicity and effortlessness.</td>
-                                    <td class="p-3 font-mono text-sm">"The Easiest Way for Patients to Book. So Simple, It Just Works."</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="p-3 font-medium text-purple-600">3. Professionalism & Growth</td>
-                                    <td class="p-3">Desire to build a successful, reputable clinic and appear professional to patients.</td>
-                                    <td class="p-3">Communicating a polished, professional image is a key driver for clinic owners.</td>
-                                    <td class="p-3 font-mono text-sm">"Give Your Patients a Professional Booking Experience They'll Love."</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-3 font-medium text-rose-600">4. Patient Care & Focus</td>
-                                    <td class="p-3">The altruistic desire to spend more quality time helping patients, which is their core passion.</td>
-                                    <td class="p-3">Appealing to their primary mission—patient care—will create the strongest emotional connection.</td>
-                                    <td class="p-3 font-mono text-sm">"Less Time Scheduling, More Time Caring. Let Patients Book Online."</td>
-                                </tr>
+                                <tr class="border-b"><td class="p-3 font-medium text-blue-600">Time & Efficiency</td><td class="p-3">Desire to reclaim personal time.</td><td class="p-3">The promise of getting time back is the strongest motivator.</td><td class="p-3 font-mono text-sm">"Fill Your Calendar, Not Your Voicemail."</td></tr>
+                                <tr class="border-b"><td class="p-3 font-medium text-green-600">Simplicity & Ease</td><td class="p-3">Desire to avoid complexity.</td><td class="p-3">Messages of simplicity will resonate with our less tech-savvy audience.</td><td class="p-3 font-mono text-sm">"The Easiest Way for Patients to Book."</td></tr>
+                                <tr class="border-b"><td class="p-3 font-medium text-purple-600">Professionalism & Growth</td><td class="p-3">Desire to build a reputable clinic.</td><td class="p-3">A polished, professional image is a key driver for clinic owners.</td><td class="p-3 font-mono text-sm">"Give Your Patients a Professional Booking Experience."</td></tr>
+                                <tr><td class="p-3 font-medium text-rose-600">Patient Care & Focus</td><td class="p-3">Desire to focus on helping patients.</td><td class="p-3">Appealing to their core mission will create the strongest emotional connection.</td><td class="p-3 font-mono text-sm">"Less Time Scheduling, More Time Caring."</td></tr>
                             </tbody>
                         </table>
-                    </div>
-                    
-                    <h3 class="text-xl font-semibold mt-8 mb-4 text-indigo-700">The Methodology: From Data to Redesign</h3>
-                    <ol class="list-decimal list-inside space-y-4 text-slate-700">
-                        <li><strong class="font-semibold text-slate-800">Select High-Impact Pages:</strong> Begin testing on core feature pages with significant traffic and clear conversion goals (e.g., Online Booking, SOAP Notes, Invoicing).</li>
-                        <li><strong class="font-semibold text-slate-800">Isolate and Test Levers:</strong> For each page, create 3-4 variants of the H1/sub-headline. Each variant will represent a different messaging lever (e.g., Time vs. Simplicity vs. Professionalism). All other page elements remain constant.</li>
-                        <li><strong class="font-semibold text-slate-800">Measure & Document:</strong> Run A/B/n tests until statistical significance is reached. The primary KPI is **Trial Signup Conversion Rate**. Secondary KPIs include engagement metrics like scroll depth and demo requests. All results will be documented in a central testing repository.</li>
-                        <li><strong class="font-semibold text-slate-800">Amalgamate Findings:</strong> After 4-6 testing sprints across different feature pages, analyze the data to identify winning patterns. Which levers consistently outperform others? Does the "Time" lever work best for charting, while "Professionalism" works best for booking?</li>
-                        <li><strong class="font-semibold text-slate-800">Develop the Rebrand Thesis:</strong> Synthesize the results into a core messaging hierarchy. For example: "Our data proves that the promise of reclaiming personal time (Lever 1) is the most powerful primary motivator for our audience, followed by the desire for simplicity (Lever 2). Our new brand voice must lead with time-saving, reinforced by ease-of-use."</li>
-                        <li><strong class="font-semibold text-slate-800">Execute a Data-Driven Rebrand:</strong> Use the validated Rebrand Thesis to systematically rewrite the copy across our entire website, from the homepage hero to the pricing page, ensuring a cohesive, compelling, and quantitatively-proven brand message.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div id="roadmap" class="content-section">
-                <header class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900">The 90-Day Implementation Plan (Q4)</h2>
-                    <p class="text-slate-600 mt-1">Our week-by-week roadmap for establishing baselines, testing, learning, and scaling.</p>
-                </header>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 1: Foundation & Quick Wins</h3>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 1: Audit & Baseline</h4>
-                            <p class="text-sm text-slate-500">Verify all tracking (GA4, UTMs) and document current funnel metrics.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 2: Finalize Levers & Hypotheses</h4>
-                            <p class="text-sm text-slate-500">Solidify copy for the 4 Messaging Levers and build the first test variant.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 3-4: Launch Test Sprint #1</h4>
-                            <p class="text-sm text-slate-500">Launch A/B/C test on the SOAP Notes page, focusing on Time vs. Simplicity vs. Care levers.</p>
-                        </div>
-                         <div class="timeline-item" style="border-left: 2px solid transparent;">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 4: Launch Lead Magnet Campaign</h4>
-                            <p class="text-sm text-slate-500">Begin TOFU "Clinic Survival Guide" campaign to build audience list in parallel.</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 2: Rapid Iteration & Learning</h3>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 5-6: Launch Test Sprint #2</h4>
-                            <p class="text-sm text-slate-500">Launch A/B/C test on the Online Booking page (Professionalism vs. Time vs. Simplicity).</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 7-8: Launch Test Sprint #3</h4>
-                            <p class="text-sm text-slate-500">Launch test on Invoicing page. Analyze results from Sprints 1 & 2 to find initial patterns.</p>
-                        </div>
-                         <div class="timeline-item" style="border-left: 2px solid transparent;">
-                             <div class="timeline-marker"></div>
-                             <h4 class="font-semibold">Week 8: Nurture Sequence Review</h4>
-                             <p class="text-sm text-slate-500">Review initial data from the lead magnet's email nurture sequence.</p>
-                         </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-2xl font-bold mb-4 border-b pb-2">Month 3: Synthesis & Rebrand Prep</h3>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 9: Data Amalgamation</h4>
-                            <p class="text-sm text-slate-500">Synthesize all test results. Identify the winning messaging levers and draft the initial Rebrand Thesis.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 10: Homepage Rebrand Test</h4>
-                            <p class="text-sm text-slate-500">Apply the Rebrand Thesis to the most important page: the Homepage. Launch a final A/B test against the current control.</p>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 11: AI Content Rollout</h4>
-                            <p class="text-sm text-slate-500">Publish first 5 "answer-formatted" blog posts from the Survival Guide, using winning language from tests.</p>
-                        </div>
-                         <div class="timeline-item" style="border-left: 2px solid transparent;">
-                            <div class="timeline-marker"></div>
-                            <h4 class="font-semibold">Week 12: Finalize Rebrand Plan</h4>
-                            <p class="text-sm text-slate-500">Document all Q4 learnings and create the full execution plan for the site-wide messaging rebrand in Q1 2026.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="blueprints" class="content-section">
-                <header class="mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900">Testing Blueprints & Templates</h2>
-                    <p class="text-slate-600 mt-1">Actionable SOPs and checklists for FPG to execute rapid, message-first testing campaigns.</p>
-                </header>
-
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <div id="blueprintTabs" class="flex border-b border-slate-200 mb-6 -mt-1">
-                        <button class="tab-button active" data-tab="landing">Appendix A: Landing Page CRO</button>
-                        <button class="tab-button" data-tab="creative">Appendix B: Ad Creative Template</button>
-                        <button class="tab-button" data-tab="meta-sop">Appendix C: Meta Ads Sprint SOP</button>
-                    </div>
-
-                    <div id="landingContent" class="tab-content active">
-                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Appendix A: Landing Page Development & CRO Checklist</h3>
-                        <p class="text-sm text-slate-600 mb-4">Focus on isolating a single variable (H1, CTA, or Form Fields) per test to ensure reliable results. Prioritize simplicity and empathy over complexity. **Primary Goal: Optimize Feature Pages for Trial Signup (80% Focus).**</p>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left">
-                                <thead class="table-header">
-                                    <tr>
-                                        <th class="p-3 font-semibold">Component</th>
-                                        <th class="p-3 font-semibold">Standard (Control)</th>
-                                        <th class="p-3 font-semibold">Testing Variable</th>
-                                        <th class="p-3 font-semibold">Brand Mandate</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b"><td class="p-3 font-medium">Headline (H1)</td><td class="p-3">"The Best Clinic Management Software"</td><td class="p-3">Test variants based on the 4 Messaging Levers.</td><td class="p-3">Focus on Benefit & Simplicity.</td></tr>
-                                    <tr class="border-b"><td class="p-3 font-medium">Sub-Headline</td><td class="p-3">Lists 3 key features.</td><td class="p-3">Lists 3 Core Benefits (e.g., Get home earlier, Reduce No-Shows).</td><td class="p-3">Focus on outcome-driven benefit.</td></tr>
-                                    <tr class="border-b"><td class="p-3 font-medium">Visual/Image</td><td class="p-3">Software screenshot.</td><td class="p-3">Relatable practitioner lifestyle image.</td><td class="p-3">Connect with humans.</td></tr>
-                                    <tr class="border-b"><td class="p-3 font-medium">Primary CTA Button</td><td class="p-3">"Start Your Free Trial"</td><td class="p-3">"See How We Simplify It. Start Trial."</td><td class="p-3">Clarity & Action.</td></tr>
-                                    <tr class="border-b"><td class="p-3 font-medium">Social Proof</td><td class="p-3">"Trusted by 5,000+ Practitioners"</td><td class="p-3">Specific quote that aligns with the tested messaging lever.</td><td class="p-3">Trustworthy & Confident.</td></tr>
-                                    <tr><td class="p-3 font-medium">Form Fields</td><td class="p-3">5-7 fields.</td><td class="p-3">MVP Form (3 fields max).</td><td class="p-3">Simplicity, reduce anxiety.</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="creativeContent" class="tab-content">
-                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Appendix B: Paid Ad Creative & Messaging Template</h3>
-                        <p class="text-sm text-slate-600 mb-4">All ad creative must be designed to validate a specific P.A.I.N. hypothesis. Creative A (Control) must be your best-performing ad.</p>
-                         <div class="overflow-x-auto">
-                            <table class="w-full text-left">
-                                <thead class="table-header">
-                                    <tr>
-                                        <th class="p-3 font-semibold">Element</th>
-                                        <th class="p-3 font-semibold">Audience Objective</th>
-                                        <th class="p-3 font-semibold">Brand Mandate</th>
-                                        <th class="p-3 font-semibold">Testing Focus</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b"><td class="p-3 font-medium">Headline / Hook</td><td class="p-3">Grab attention by hitting the PAIN POINT.</td><td class="p-3">Empathy-Driven.</td><td class="p-3">Pain Point: Billing vs. Charting vs. Scheduling.</td></tr>
-                                    <tr class="border-b"><td class="p-3 font-medium">Ad Copy / Body</td><td class="p-3">Introduce the VALUE (The Guide/Trial) and DIFF.</td><td class="p-3">Non-Technical & Helpful.</td><td class="p-3">Differentiation: Ease vs. Time-Saving.</td></tr>
-                                    <tr class="border-b"><td class="p-3 font-medium">Call-to-Action</td><td class="p-3">Drive the user to the Trial or FREE DOWNLOAD.</td><td class="p-3">Clarity & Transparency.</td><td class="p-3">Offer: "Start Trial" vs. "Download Free Guide."</td></tr>
-                                    <tr><td class="p-3 font-medium">Creative / Visual</td><td class="p-3">Social Proof / Relatability.</td><td class="p-3">UGC-style video or relaxed practitioner image.</td><td class="p-3">Visual Type: UGC vs. Brand Interface.</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="meta-sopContent" class="tab-content">
-                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Appendix C: Meta Ads Sprint SOP (The Why & How)</h3>
-                        <div class="space-y-6 text-slate-600">
-                             <h4 class="font-bold text-lg text-slate-800">1. The Strategic Purpose (Why Meta Ads?)</h4>
-                             <p>Meta Ads (Facebook/Instagram) are essential for our **Trial Signup Funnel (80% focus)** because they allow us to test **Creative and Audience** with unparalleled speed and scale. Our focus is two-fold: **Direct Trial** conversion for high-intent queries (80%) and **Lead Generation** for research-phase users (20%). We must interrupt the scroll with a **highly empathetic message** that validates the practitioner’s core pain ("spending too much time managing business").</p>
-
-                            <h4 class="font-bold text-lg text-slate-800">2. Mandatory Campaign Architecture</h4>
-                            <p>FPG must strictly adhere to the two-tier structure to isolate learning from performance budget:</p>
-                             <ul class="list-disc list-inside ml-4 space-y-2">
-                                 <li>**Tier 1: Always-On Campaigns (80-85% Budget):** Used *only* for scaling **proven winning creative/audience combinations**. Campaign Budget Optimization (CBO) is suitable here.</li>
-                                 <li>**Tier 2: Testing Sprints (15-20% Budget):** Where all P.A.I.N. testing occurs. **Crucially, Ad Set Budget Optimization (ABO) is mandatory here.** This forces an **equal budget split** (50/50) between the Control (A) and Variant (B), preventing Meta's algorithm from prematurely favoring a variant before we reach the statistical sample size required for learning.</li>
-                             </ul>
-
-                            <h4 class="font-bold text-lg text-slate-800">3. Sprint Testing Mechanics (ABO 1:1 Rule)</h4>
-                            <p>Every test must be a clean A/B comparison using the ABO 1:1 structure:</p>
-                            <div class="overflow-x-auto my-4">
-                                <table class="w-full text-left border border-slate-200">
-                                    <thead class="bg-indigo-50">
-                                        <tr><th class="p-3 font-semibold">Test Type</th><th class="p-3 font-semibold">Control (A)</th><th class="p-3 font-semibold">Variant (B)</th></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="border-b"><td class="p-3 font-medium text-indigo-600">Creative Sprint</td><td class="p-3">Existing Winning Creative / New Test Copy</td><td class="p-3">**Same Audience / Same Landing Page** / New Test Copy</td></tr>
-                                        <tr><td class="p-3 font-medium text-indigo-600">Audience Sprint</td><td class="p-3">Existing Winning Creative / Core US Audience</td><td class="p-3">**Same Creative / Same Landing Page** / Target Audience (e.g., LAL 1% of top customers)</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                             <h4 class="font-bold text-lg text-slate-800">4. Kill & Scale Guardrails (Data-Driven Decisions)</h4>
-                             <ul class="list-disc list-inside ml-4 space-y-2">
-                                 <li>**Minimum Duration:** **7 Days** (to clear the learning phase).</li>
-                                 <li>**Kill Switch:** Pause the variant and document learnings if CPL exceeds the Tier 1 historical CPL by **50%** after 5 days.</li>
-                                 <li>**Scaling:** Only scale the winning variant (verified by statistical significance) to the Tier 1 budget. Apply budget increases incrementally (max **20% every 72 hours**) to maintain CVR stability.</li>
-                             </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -543,50 +286,29 @@
             <div id="hypothesis" class="content-section">
                 <header class="mb-8">
                     <h2 class="text-3xl font-bold text-slate-900">Hypothesis Hub & Prioritization</h2>
-                    <p class="text-slate-600 mt-1">Use this tool to formulate new test ideas using the P.A.I.N. framework and calculate the I.C.E. score for prioritization.</p>
+                    <p class="text-slate-600 mt-1">Formulate new test ideas and calculate the I.C.E. score to prioritize for the Testing Backlog.</p>
                 </header>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div class="bg-white rounded-lg shadow-lg p-6">
-                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Formulate a P.A.I.N. Hypothesis</h3>
+                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Formulate a Hypothesis</h3>
                         <div class="space-y-4">
-                             <div>
-                                <label class="font-medium text-slate-700">We believe that changing...</label>
-                                <input type="text" placeholder="[Element X] e.g., the Guide's Download CTA button text" class="w-full mt-1 rounded-md border-slate-300 shadow-sm">
-                            </div>
-                            <div>
-                                <label class="font-medium text-slate-700">for...</label>
-                                <input type="text" placeholder="[Audience Y] e.g., Solo Massage Therapists on Meta" class="w-full mt-1 rounded-md border-slate-300 shadow-sm">
-                            </div>
-                            <div>
-                                <label class="font-medium text-slate-700">will result in a...</label>
-                                <input type="text" placeholder="[Measurable Change Z] e.g., 20% lower Cost Per Download" class="w-full mt-1 rounded-md border-slate-300 shadow-sm">
-                            </div>
-                            <div>
-                                <label class="font-medium text-slate-700">because...</label>
-                                <textarea placeholder="[Core Noterro P.A.I.N. Insight] e.g., they value time-saving more than feature depth." class="w-full mt-1 rounded-md border-slate-300 shadow-sm" rows="3"></textarea>
-                            </div>
+                             <div><label class="font-medium text-slate-700">We believe that changing...</label><input type="text" placeholder="[Element X] e.g., the Guide's Download CTA button text" class="w-full mt-1 rounded-md border-slate-300 shadow-sm"></div>
+                            <div><label class="font-medium text-slate-700">for...</label><input type="text" placeholder="[Audience Y] e.g., Solo Massage Therapists on Meta" class="w-full mt-1 rounded-md border-slate-300 shadow-sm"></div>
+                            <div><label class="font-medium text-slate-700">will result in a...</label><input type="text" placeholder="[Measurable Change Z] e.g., 20% lower Cost Per Download" class="w-full mt-1 rounded-md border-slate-300 shadow-sm"></div>
+                            <div><label class="font-medium text-slate-700">because...</label><textarea placeholder="[Core Noterro P.A.I.N. Insight] e.g., they value time-saving more than feature depth." class="w-full mt-1 rounded-md border-slate-300 shadow-sm" rows="3"></textarea></div>
                         </div>
                     </div>
                      <div class="bg-white rounded-lg shadow-lg p-6">
                         <h3 class="text-xl font-semibold mb-4 text-indigo-700">Calculate I.C.E. Score</h3>
                          <div class="space-y-6">
-                             <div>
-                                <label for="impact" class="flex justify-between font-medium text-slate-700">Impact <span id="impactValue" class="font-bold text-indigo-600">5</span></label>
-                                <input id="impact" type="range" min="0" max="10" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
-                            </div>
-                             <div>
-                                <label for="confidence" class="flex justify-between font-medium text-slate-700">Confidence <span id="confidenceValue" class="font-bold text-indigo-600">5</span></label>
-                                <input id="confidence" type="range" min="0" max="10" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
-                            </div>
-                             <div>
-                                <label for="ease" class="flex justify-between font-medium text-slate-700">Ease (Effort) <span id="easeValue" class="font-bold text-indigo-600">5</span></label>
-                                <input id="ease" type="range" min="0" max="10" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
-                            </div>
+                             <div><label for="impact" class="flex justify-between font-medium text-slate-700">Impact <span id="impactValue" class="font-bold text-indigo-600">5</span></label><input id="impact" type="range" min="0" max="10" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"></div>
+                             <div><label for="confidence" class="flex justify-between font-medium text-slate-700">Confidence <span id="confidenceValue" class="font-bold text-indigo-600">5</span></label><input id="confidence" type="range" min="0" max="10" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"></div>
+                             <div><label for="ease" class="flex justify-between font-medium text-slate-700">Ease (Effort) <span id="easeValue" class="font-bold text-indigo-600">5</span></label><input id="ease" type="range" min="0" max="10" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"></div>
                          </div>
                          <div class="mt-8 text-center">
                              <p class="text-slate-600">Total I.C.E. Score</p>
                              <p id="iceScore" class="text-6xl font-bold text-indigo-700 my-2">15</p>
-                             <p class="text-sm text-slate-500">Higher scores should be prioritized first.</p>
+                             <p class="text-sm text-slate-500">Higher scores get prioritized in the backlog.</p>
                          </div>
                     </div>
                 </div>
@@ -645,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
     new Chart(funnelCtx, {
         type: 'doughnut',
         data: {
-            labels: ['Trial Signup Funnel (80%)', 'Lead Capture Funnel (20%)'],
+            labels: ['Testing & Learning (80%)', 'Scaling Winners (20%)'],
             datasets: [{
                 data: [80, 20],
                 backgroundColor: ['#4f46e5', '#a5b4fc'],
@@ -654,23 +376,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }]
         },
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '70%',
+            responsive: true, maintainAspectRatio: false, cutout: '70%',
             plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        padding: 20
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return `${context.label}: ${context.raw}% Focus`;
-                        }
-                    }
-                }
+                legend: { position: 'bottom', labels: { padding: 20 } },
+                tooltip: { callbacks: { label: function(context) { return `${context.label}: ${context.raw}% Effort`; } } }
             }
         }
     });
@@ -684,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const iceScore = document.getElementById('iceScore');
 
     function updateIceScore() {
-        if (!impactSlider) return; // Guard against elements not being on the page
+        if (!impactSlider) return;
         const i = parseInt(impactSlider.value);
         const c = parseInt(confidenceSlider.value);
         const e = parseInt(easeSlider.value);
@@ -701,17 +410,16 @@ document.addEventListener('DOMContentLoaded', function () {
       updateIceScore();
     }
 
-    const tabButtons = document.querySelectorAll('#blueprintTabs .tab-button');
-    const tabContents = document.querySelectorAll('#blueprints .tab-content');
+    // Tab Logic for Growth Engine
+    const engineTabButtons = document.querySelectorAll('#engineTabs .tab-button');
+    const engineTabContents = document.querySelectorAll('#engine .tab-content');
 
-    tabButtons.forEach(button => {
+    engineTabButtons.forEach(button => {
         button.addEventListener('click', () => {
             const tab = button.getAttribute('data-tab');
-
-            tabButtons.forEach(btn => btn.classList.remove('active'));
+            engineTabButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-
-            tabContents.forEach(content => {
+            engineTabContents.forEach(content => {
                 content.classList.remove('active');
                 if (content.id === `${tab}Content`) {
                     content.classList.add('active');
